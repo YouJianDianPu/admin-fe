@@ -1,0 +1,56 @@
+/*
+* @Author: YouJDP
+* @Date:   2018-03-05 11:07:34
+* @Last Modified by:   YouJDP
+* @Last Modified time: 2018-03-05 17:47:33
+*/
+
+'use strict';
+
+import MMUtil from 'util/mm.jsx';
+
+const _mm = new MMUtil();
+
+export default class Order{
+    // 获取订单列表
+    getOrderList(listParam){
+        if(listParam.listType == 'list'){
+            console.log(_mm.request({
+                url     : _mm.getServerUrl('http://localhost:8080/manage/order/list.do'),
+                data    : {
+                    pageNum : listParam.pageNum || 1
+                }
+            }));
+            return _mm.request({
+                url     : _mm.getServerUrl('http://localhost:8080/manage/order/list.do'),
+                data    : {
+                    pageNum : listParam.pageNum || 1
+                }
+            });
+        }
+        else if(listParam.listType == 'search'){
+            return _mm.request({
+                url     : _mm.getServerUrl('http://localhost:8080/manage/order/search.do'),
+                data    : listParam
+            });
+        } 
+    }
+    // 获取订单详情
+    getOrderDetail(orderNo){
+        return _mm.request({
+            url     : _mm.getServerUrl('http://localhost:8080/manage/order/detail.do'),
+            data    : {
+                orderNo : orderNo || 0
+            }
+        });
+    }
+    // 发货
+    sendGoods(orderNo){
+        return _mm.request({
+            url     : _mm.getServerUrl('http://localhost:8080/manage/order/send_goods.do'),
+            data    : {
+                orderNo : orderNo || 0
+            }
+        });
+    }
+}

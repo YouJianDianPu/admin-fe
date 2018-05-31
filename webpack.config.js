@@ -2,7 +2,7 @@
 * @Author: YouJDP
 * @Date:   2018-02-20 13:19:28
 * @Last Modified by:   YouJDP
-* @Last Modified time: 2018-04-18 15:24:13
+* @Last Modified time: 2018-05-31 20:54:45
 */
 
 var webpack             = require('webpack');
@@ -25,7 +25,7 @@ var config = {
     // path && publickPath
     output: {
         path        : __dirname + '/dist_back/',
-        publicPath  : WEBPACK_ENV === 'online' ? '//s.happymmall.com/admin-fe/dist/' : '/dist_back/',
+        publicPath  : '/dist_back/',
         filename    : 'js/[name].js'
     },
     resolve: {
